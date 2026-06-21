@@ -303,7 +303,31 @@
     margin-bottom: 22px;
     transition: border-color 0.2s ease, transform 0.2s ease;
   }
+.project-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
 
+.project-images img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: 0.3s;
+}
+
+.project-images img:hover {
+  transform: scale(1.03);
+}
+
+@media(max-width:720px){
+  .project-images {
+    grid-template-columns: 1fr;
+  }
+}
   .project-card:hover {
     border-color: var(--accent);
     transform: translateY(-3px);
@@ -587,11 +611,14 @@
         <li>Clean, responsive UI design</li>
         <li>Improves data organization workflow</li>
       </ul>
-      <a class="project-link" href="YOUR_PROJECT_LINK_HERE" target="_blank" rel="noopener">
-        View Project
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-      </a>
-    </div>
+      <div class="project-images">
+
+<img src="images/studentmgtproject1.png" 
+alt="Student Management System">
+
+<img src="images/student2.png" 
+alt="Add Student">
+
 
     <div class="project-card">
       <div class="project-top">
