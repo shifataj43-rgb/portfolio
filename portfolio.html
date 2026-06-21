@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shifa Taj — SEO Executive & Web Developer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0F172A;
+    --slate: #1E293B;
+    --slate-light: #334155;
+    --muted: #64748B;
+    --accent: #0891B2;
+    --accent-bright: #06B6D4;
+    --bg: #FAFAF9;
+    --bg-card: #FFFFFF;
+    --border: #E2E8F0;
+    --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-display);
+    background: var(--bg);
+    color: var(--slate);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  /* ---------- Layout shell ---------- */
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 250, 249, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-mark {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-mark span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    padding: 96px 0 72px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--accent-bright);
+    box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.15);
+  }
+
+  h1.name {
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    line-height: 1.05;
+    display: block;
+  }
+
+  h1.name span.underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  h1.name span.underline::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    bottom: 6px;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, rgba(6,182,212,0.18), rgba(6,182,212,0));
+    z-index: -1;
+  }
+
+  .role-line {
+    margin-top: 18px;
+    font-size: 19px;
+    color: var(--slate-light);
+    font-weight: 500;
+    max-width: 560px;
+  }
+
+  .role-line .divider {
+    color: var(--border);
+    margin: 0 10px;
+  }
+
+  .hero-tags {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-tag {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--muted);
+    background: var(--bg-card);
+  }
+
+  .hero-actions {
+    margin-top: 36px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ---------- Section scaffolding ---------- */
+  section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 36px;
+  }
+
+  /* ---------- About ---------- */
+  .about-text p {
+    font-size: 16px;
+    color: var(--slate-light);
+    max-width: 700px;
+    margin-bottom: 16px;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-text strong { color: var(--ink); font-weight: 700; }
+
+  /* ---------- Skills ---------- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .skill-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .skill-block h3 {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-block ul {
+    list-style: none;
+  }
+
+  .skill-block li {
+    font-size: 14.5px;
+    color: var(--slate-light);
+    padding: 5px 0;
+    position: relative;
+    padding-left: 16px;
+  }
+
+  .skill-block li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+  }
+
+  /* ---------- Projects ---------- */
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 30px;
+    margin-bottom: 22px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .project-card:last-child { margin-bottom: 0; }
+
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .project-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .project-index {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 3px 8px;
+    white-space: nowrap;
+  }
+
+  .project-card p.desc {
+    font-size: 15px;
+    color: var(--slate-light);
+    margin-bottom: 16px;
+    max-width: 620px;
+  }
+
+  .project-card ul {
+    list-style: none;
+    margin-bottom: 20px;
+  }
+
+  .project-card ul li {
+    font-size: 14px;
+    color: var(--muted);
+    padding: 4px 0 4px 18px;
+    position: relative;
+  }
+
+  .project-card ul li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+    top: 6px;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .project-link:hover { color: var(--ink); }
+
+  .project-link svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+  }
+
+  .project-link:hover svg { transform: translate(2px, -2px); }
+
+  /* ---------- Contact ---------- */
+  .contact-section {
+    text-align: left;
+  }
+
+  .contact-card {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 48px;
+    color: white;
+  }
+
+  .contact-card .section-label { color: var(--accent-bright); }
+
+  .contact-card h2 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-card p.sub {
+    color: #94A3B8;
+    font-size: 15px;
+    margin-bottom: 32px;
+    max-width: 480px;
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-decoration: none;
+    color: white;
+    transition: padding-left 0.2s ease;
+  }
+
+  .contact-row:hover { padding-left: 6px; color: var(--accent-bright); }
+
+  .contact-row .label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #64748B;
+    width: 90px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .contact-row .value {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 32px 0 48px;
+    text-align: center;
+  }
+
+  footer p {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 720px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .nav-links { gap: 16px; }
+    header.hero { padding: 64px 0 48px; }
+    .contact-card { padding: 32px 24px; }
+    .contact-row .label { width: 70px; }
+  }
+
+  @media (max-width: 480px) {
+    .nav-links a:nth-child(4) { display: none; }
+  }
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  /* ---------- Focus visibility ---------- */
+  a:focus-visible, .btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-mark">shifa<span>.</span>dev</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Open to full-stack developer roles</div>
+    <h1 class="name"><span class="underline">Shifa Taj</span></h1>
+    <p class="role-line">Junior SEO Executive<span class="divider">/</span>Aspiring Full-Stack Web Developer</p>
+    <div class="hero-tags">
+      <span class="hero-tag">HTML / CSS / JS</span>
+      <span class="hero-tag">SEO &amp; Content Strategy</span>
+      <span class="hero-tag">BCA Graduate</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">View Projects</a>
+      <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-label">01 / About</div>
+    <h2 class="section-title">Background</h2>
+    <div class="about-text">
+      <p>
+        I'm <strong>Shifa Taj</strong>, a BCA graduate from BET Sadathunnisa Degree College with hands-on experience as a Junior SEO Executive at <strong>Percoyo Digital</strong>. My work there spanned keyword research, on-page optimization, content writing and editing, competitor analysis, and improving website visibility through structured SEO techniques.
+      </p>
+      <p>
+        That role sharpened my analytical thinking and gave me a practical understanding of how websites perform, rank, and grow — insight I'm now channeling into web development.
+      </p>
+      <p>
+        I'm passionate about learning new technologies and building real-world projects. My long-term goal is to grow into a skilled <strong>Full-Stack Developer</strong>, building efficient, user-friendly, and impactful web applications.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-label">02 / Skills</div>
+    <h2 class="section-title">What I work with</h2>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <h3>Frontend</h3>
+        <ul>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h3>SEO</h3>
+        <ul>
+          <li>On-page Optimization</li>
+          <li>Keyword Research</li>
+          <li>Blog Writing</li>
+          <li>Competitor Analysis</li>
+          <li>Wireframe Creation</li>
+          <li>Google Analytics Basics</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h3>Soft Skills</h3>
+        <ul>
+          <li>Problem Solving</li>
+          <li>Attention to Detail</li>
+          <li>Time Management</li>
+          <li>Quick Learning Ability</li>
+          <li>Ownership &amp; Responsibility</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-label">03 / Projects</div>
+    <h2 class="section-title">Selected work</h2>
+
+    <div class="project-card">
+      <div class="project-top">
+        <h3>Student Management System</h3>
+        <span class="project-index">01</span>
+      </div>
+      <p class="desc">A web application designed to manage student records efficiently with full CRUD functionality.</p>
+      <ul>
+        <li>Add, update, and delete student records</li>
+        <li>Real-time DOM manipulation</li>
+        <li>Clean, responsive UI design</li>
+        <li>Improves data organization workflow</li>
+      </ul>
+      <a class="project-link" href="YOUR_PROJECT_LINK_HERE" target="_blank" rel="noopener">
+        View Project
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <h3>Smart Resume Builder</h3>
+        <span class="project-index">02</span>
+      </div>
+      <p class="desc">A dynamic web tool that generates professional resumes and exports them as downloadable PDFs.</p>
+      <ul>
+        <li>Dynamic form-based input system</li>
+        <li>Real-time resume preview</li>
+        <li>PDF export using html2canvas + jsPDF</li>
+      </ul>
+      <a class="project-link" href="https://smart-resume-builder-alpha.vercel.app/" target="_blank" rel="noopener">
+        View Project
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="wrap">
+    <div class="contact-card">
+      <div class="section-label">04 / Contact</div>
+      <h2>Let's work together</h2>
+      <p class="sub">Open to junior developer roles, freelance projects, and opportunities to grow as a full-stack engineer.</p>
+      <div class="contact-list">
+        <a class="contact-row" href="mailto:shifataj43@gmail.com">
+          <span class="label">Email</span>
+          <span class="value">shifataj43@gmail.com</span>
+        </a>
+        <a class="contact-row" href="https://www.linkedin.com/in/shifa-taj-513a42271" target="_blank" rel="noopener">
+          <span class="label">LinkedIn</span>
+          <span class="value">linkedin.com/in/shifa-taj</span>
+        </a>
+        <a class="contact-row" href="https://github.com/shifataj43-rgb" target="_blank" rel="noopener">
+          <span class="label">GitHub</span>
+          <span class="value">github.com/shifataj43-rgb</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Shifa Taj — Built with HTML &amp; CSS</p>
+  </div>
+</footer>
+
+</body>
+</html>
