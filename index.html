@@ -500,7 +500,17 @@
 
   @media (max-width: 768px) {
     .skills-grid { grid-template-columns: 1fr; }
-    .nav-links { display: none; } /* Simplified nav for mobile */
+    nav .wrap {
+      flex-direction: column;
+      height: auto;
+      padding: 16px;
+      gap: 12px;
+    }
+    .nav-links { 
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
     .nav-mark { margin: 0 auto; }
     h1.name { font-size: 40px; }
     .contact-card { padding: 40px 24px; border-radius: 24px; }
@@ -530,7 +540,8 @@
   <div class="wrap">
     <div class="eyebrow">Available for Opportunities</div>
     <h1 class="name">Hi, I'm Shifa Taj.</h1>
-    <p class="role-line">BCA Graduate | Junior SEO Executive</p>
+    <p class="role-line" style="margin-bottom: 12px;">BCA Graduate | Junior SEO Executive</p>
+    <p class="role-line" style="margin-top: 0; font-size: 18px; color: var(--accent-1); font-weight: 600;">Continuously Learning &amp; Growing</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#experience">See my work</a>
       <a class="btn btn-secondary" href="#contact">Contact me</a>

@@ -180,9 +180,21 @@
 
   /* ---------- Responsive ---------- */
   @media (max-width: 768px) {
-    .nav-links { display: none; }
+    nav .wrap {
+      flex-direction: column;
+      height: auto;
+      padding: 16px;
+      gap: 12px;
+    }
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
     .nav-mark { margin: 0 auto; }
     .glass-card { padding: 24px; }
+    section { padding: 60px 0; }
+  }
     section { padding: 60px 0; }
   }
 </style>
